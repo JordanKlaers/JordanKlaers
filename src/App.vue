@@ -1,18 +1,21 @@
 <template>
 	<div id="app">
 		<banner></banner>
+		<geometry></geometry>
 	</div>
 </template>
 
 <script>
 import Card from './components/Card';
 import Banner from './components/Banner';
+import Geometry from './components/geometry';
 import 'babel-polyfill';
 export default {
 	name: 'app',
 	components: {
 		Banner,
-		Card
+		Card,
+		Geometry
 	},
 	data() {
 		return {
