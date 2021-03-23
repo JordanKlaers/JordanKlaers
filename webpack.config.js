@@ -55,24 +55,20 @@ module.exports = {
 				use: ['babel-loader']
 			},
 			{
+				test: /\.(jpg|jpeg|png|woff|woff2|eot|ttf|svg)$/,
+				use: ['url-loader']
+			},
+			{
 				test: /\.scss$/,
 				use: [
 					"style-loader", // creates style nodes from JS strings
-					"css-loader", // translates CSS into CommonJS
+					"css-loader?url=false", // translates CSS into CommonJS
 					"sass-loader" // compiles Sass to CSS
 				]
 			},
 			{
 				test: /\.vue$/,
 				loader: 'vue-loader'
-			},
-			{
-				test: /\.(jpe?g|png|gif|svg)$/i, 
-				loader: "file-loader"
-			},
-			{
-				test: /\.(jpg|jpeg|png|woff|woff2|eot|ttf|svg)$/,
-				loader: 'url-loader?limit=100000'
 			}
 		]
 	},

@@ -27,4 +27,5 @@ body #app {
   --inactive-text-color: var(--light-text-color);
   --inactive-app-bg-color: var(--light-app-bg-color);
   --inactive-element-bg-color: var(--light-element-bg-color);
+  --scale-to-window-width: 1;
 }

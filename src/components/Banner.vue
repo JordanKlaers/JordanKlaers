@@ -18,8 +18,15 @@ export default {
 	data() {
 		return {
 			clickHandler: debounce(this.toggleMode, 300, { 'leading': true, 'trailing': false }),
+			windowResizeScaleHandler: debounce(this.setScale, 300, { 'leading': false, 'trailing': true }),
 			mode: 'dark'
 		}
+	},
+	beforeMount() {
+		window.addEventListener('resize', this.windowResizeScaleHandler);
+	},
+	mounted() {
+		this.setScale();
 	},
 	methods: {
 		toggleMode() {
@@ -35,6 +42,11 @@ export default {
 			});
 			Array.from(document.querySelectorAll('.light')).forEach(el => el.classList.toggle('visible'));
 			Array.from(document.querySelectorAll('.dark')).forEach(el => el.classList.toggle('visible'));
+		},
+		setScale() {
+			let styles = document.getElementById('app').style;
+			let scale =  Math.min(window.innerWidth, 1000)/1000;
+			styles.setProperty('--scale-to-window-width', scale);
 		}
 	},
 	watch: {}
@@ -43,6 +55,7 @@ export default {
 <style lang='scss' type="text/scss">
 @import '~_scss_/_mixins';
 #banner {
+	visibility: hidden;
 	@include box-shadow((color: rgba(0,0,0,0.05))...);
 	display: flex;
 	transition: 1s;
