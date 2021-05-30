@@ -15,35 +15,7 @@ body, html {
 #app {
 	position: relative;
 	transition: 1s;
-	// background-color: var(--active-app-bg-color);
 	min-height: 100vh;
-	// background-image: url('~_images_/hackerman.jpg');
-	background-image: url('~_images_/design.jpg');
+	// background-image: url('~_images_/design.jpg');
 	overflow-x: hidden;
-	/*
-	&::before {
-		transition: 1s;
-		content: '';
-		position: absolute;
-		left: 0;
-		top: 81px;
-		height: 0;
-		width: 0;
-		border-color: var(--active-neutral-1) transparent transparent var(--active-neutral-1);
-		border-style: solid;
-		border-width: 140px 100vw 0 0px;
-	}
-	&::after {
-		transition: 1s;
-		content: '';
-		position: absolute;
-		right: 0;
-		top: 81px;
-		height: 0;
-		width: 0;
-		border-color: var(--active-neutral-2) transparent transparent transparent;
-		border-style: solid;
-		border-width: 100px 0 0 91vw;
-	}
-	*/
 }

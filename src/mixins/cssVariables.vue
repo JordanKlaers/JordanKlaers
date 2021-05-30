@@ -39,7 +39,6 @@ export default {
 			// styleSheets is array-like, so we convert it to an array.
 			// Filter out any stylesheets not on this domain
 			const that = this;
-			console.log('this or that: ', this, that)
 			return [...document.styleSheets].filter(that.isSameDomain).reduce((finalArr, sheet) =>
 				finalArr.concat(
 					// cssRules is array-like, so we convert it to an array
