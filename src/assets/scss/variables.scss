@@ -4,22 +4,56 @@ body {
 	--background-color: white;
 	--app-height: 100%;
 	
-	--dark-element-bg-color: hsl(0, 83%, 65%);
-	--dark-app-bg-color: hsl(0, 0%, 10%);
-	--dark-text-color: hsl(0, 0%, 100%);
-	//--DarkModeBoxShadow: rgba(0,0,0,0.2);
+	--dark-element-bg-color: rgb(240, 92, 92);
+	--light-element-bg-color: rgb(255, 255, 255);
+	
+	--dark-app-bg-color: rgb(28, 32, 37);
+	--light-app-bg-color: rgb(250, 250, 250);
 
-	--dark-neutral-1: hsl(0, 0%, 25%);
-	--dark-neutral-2: hsl(0, 0%, 35%);
 
-	--light-neutral-1: hsl(0, 0%, 85%);
-	--light-neutral-2: hsl(0, 0%, 80%);
+	--dark-text-color: rgb(255, 255, 255);
+	--light-text-color: rgb(17, 21, 23);
 
-	--light-text-color: hsl(200, 15%, 8%);
-	//--LightModeInput: hsl(0, 0%, 52%);
-	--light-app-bg-color: hsl(0, 0%, 98%);
-	--light-element-bg-color: hsl(0, 0%, 100%);
-	//--LightModeBoxShadow: rgba(0,0,0,0.2);
+	--bio-placement: 100px;
+
+	//geometry color variables
+	//variable name format: category - color group - variant
+	--dark-neutral-1: rgb(28, 32, 37);
+	--dark-neutral-2: rgb(45, 47, 58);
+	--dark-neutral-2-shadow: -1px 0px 12px 2px rgba(50, 50, 50, 1);
+	--dark-neutral-3: rgb(36, 40, 48);
+	
+	--light-neutral-1: rgb(224, 224, 224);
+	--light-neutral-2: rgb(238, 238, 238);
+	--light-neutral-2-shadow: -1px 0px 12px 2px rgb(238, 238, 238);
+	--light-neutral-3: rgb(215, 215, 215);
+	
+	--light-primary-1-a: rgb(255, 239, 122);
+	--light-primary-1-b: rgb(255, 199, 9);
+	--light-primary-1-c: rgb(255, 197, 65);
+	--light-primary-1-d: rgb(217, 255, 65);
+
+	--light-secondary-1-a: rgba(54, 221, 76, 1);
+	--light-secondary-1-b: rgba(7, 129, 3, 0.5);
+	--light-secondary-1-c: rgba(45, 248, 18, 0.3);
+	--light-secondary-1-d: rgb(0, 92, 8);
+
+	--dark-primary-1-a: rgba(163, 204, 251, 0.8);
+	--dark-primary-1-b: rgb(12, 114, 197);
+    --dark-primary-1-c: rgba(0, 140, 255, 0.5);
+	--dark-primary-1-d: rgb(56, 117, 216);
+
+	--dark-secondary-1-a: rgba(169, 105, 253, 1);
+	--dark-secondary-1-b: rgba(116, 9, 255, 0.5);
+    --dark-secondary-1-c: rgb(91, 0, 209);
+	--dark-secondary-1-d: rgba(58, 3, 129, 0);
+
+	--dark-primary-line-1: var(--dark-secondary-1-c);
+	--dark-secondary-line-1: var(--dark-primary-1-b);
+
+	--light-primary-line-1: var(--light-secondary-1-b);
+	--light-secondary-line-1: var(--light-primary-1-b);
+
 
 
 	--text-large: 20px;
@@ -34,13 +68,20 @@ body {
 		--active-element-bg-color: var(--dark-element-bg-color);
 
 		--active-neutral-1: var(--dark-neutral-1);
+		--active-neutral-1-shadow: var(--dark-neutral-1-shadow);
 		--active-neutral-2: var(--dark-neutral-2);
+		--active-neutral-2-shadow: var(--dark-neutral-2-shadow);
+		--active-neutral-3: var(--dark-neutral-3);
+
+		--active-primary-line-1: var(--dark-primary-line-1);
+		--active-secondary-line-1: var(--dark-secondary-line-1);
+
 
 		--inactive-text-color: var(--light-text-color);
 		--inactive-app-bg-color: var(--light-app-bg-color);
 		--inactive-element-bg-color: var(--light-element-bg-color);
 
-		--scale-to-window-width: 1;
+		--global-scale-to-window-width: 1;
 	}
 }
 

@@ -17,5 +17,7 @@ body, html {
 	transition: 1s;
 	min-height: 100vh;
 	// background-image: url('~_images_/design.jpg');
+	background-color: var(--active-app-bg-color);
+	background-color: var(--active-neutral-1);
 	overflow-x: hidden;
 }

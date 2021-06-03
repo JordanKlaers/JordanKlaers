@@ -136,7 +136,8 @@ export default {
     position: absolute;
     z-index: 2;
     height: 75vh;
-    width: 100vw;
+    width: 0px;
+    right: 0;
     .shape {
         position: absolute;
         overflow: hidden;
@@ -146,10 +147,10 @@ export default {
             width: 160,
             top: -35,
             right: -20,
-            dark-before-one: rgba(45, 248, 18, 0.3),    dark-before-two: rgb(0, 92, 8),
-            dark-after-one: rgba(54, 221, 76, 1),       dark-after-two: rgba(7, 129, 3, 0),
-            light-before-one: rgb(198, 204, 255),       light-before-two: rgb(18, 72, 248),
-            light-after-one: rgb(208, 213, 255),        light-after-two: rgb(65, 85, 255)
+            dark-before-one: var(--dark-secondary-1-a),    dark-before-two: var(--dark-secondary-1-b),
+            dark-after-one: var(--dark-secondary-1-c),       dark-after-two: var(--dark-secondary-1-d),
+            light-before-one: var(--light-secondary-1-c),    light-before-two: var(--light-secondary-1-d),
+            light-after-one: var(--light-secondary-1-a),       light-after-two: var(--light-secondary-1-b),
         ));
         @include square-diagonal-split((
             className: "square-1-b",
@@ -158,10 +159,10 @@ export default {
             top: 180,
             right: 15,
             rotate: 45deg,
-            dark-before-one: rgba(45, 248, 18, 0.3),    dark-before-two: rgb(0, 92, 8),
-            dark-after-one: rgba(35, 179, 54, 0),       dark-after-two: rgb(61, 216, 56),
-            light-before-one: rgb(198, 204, 255),       light-before-two: rgb(18, 72, 248),
-            light-after-one: rgb(208, 213, 255),        light-after-two: rgb(65, 85, 255),
+            dark-before-one: var(--dark-secondary-1-a),    dark-before-two: var(--dark-secondary-1-b),
+            dark-after-one: var(--dark-secondary-1-c),       dark-after-two: var(--dark-secondary-1-d),
+            light-before-one: var(--light-secondary-1-c),    light-before-two: var(--light-secondary-1-d),
+            light-after-one: var(--light-secondary-1-a),       light-after-two: var(--light-secondary-1-b),
             z-index: 2
         ));
         @include square-diagonal-split((
@@ -171,10 +172,10 @@ export default {
             top: 68,
             right: 107,
             rotate: -135deg,
-            dark-before-one: rgba(0, 118, 253, 0.3),    dark-before-two: rgb(0, 66, 92),
-            dark-after-one: rgba(35, 179, 54, 0),       dark-after-two: rgb(56, 117, 216),
-            light-before-one: rgb(198, 204, 255),       light-before-two: rgb(18, 72, 248),
-            light-after-one: rgb(208, 213, 255),        light-after-two: rgb(65, 85, 255)
+            dark-before-one: var(--dark-primary-1-a),    dark-before-two: var(--dark-primary-1-b),
+            dark-after-one: var(--dark-primary-1-c),       dark-after-two: var(--dark-primary-1-d),
+            light-before-one: var(--light-primary-1-a),       light-before-two: var(--light-primary-1-b),
+            light-after-one: var(--light-primary-1-c),        light-after-two: var(--light-primary-1-d)
         ));
         @include square-diagonal-split((
             className: "square-2-b",
@@ -183,10 +184,10 @@ export default {
             top: 230,
             right: 117,
             rotate: 135deg,
-            dark-before-one: rgba(0, 118, 253, 0.6),    dark-before-two: rgb(0, 66, 92),
-            dark-after-one: rgba(35, 138, 179, 0.4),       dark-after-two: rgb(56, 117, 216),
-            light-before-one: rgb(198, 204, 255),       light-before-two: rgb(18, 72, 248),
-            light-after-one: rgb(208, 213, 255),        light-after-two: rgb(65, 85, 255),
+            dark-before-one: var(--dark-primary-1-a),    dark-before-two: var(--dark-primary-1-b),
+            dark-after-one: var(--dark-primary-1-c),       dark-after-two: var(--dark-primary-1-d),
+            light-before-one: var(--light-primary-1-a),       light-before-two: var(--light-primary-1-b),
+            light-after-one: var(--light-primary-1-c),        light-after-two: var(--light-primary-1-d),
             z-index: 2
         ));
         @include square-diagonal-split((
@@ -196,10 +197,10 @@ export default {
             top: 270,
             right: 260,
             rotate: -25deg,
-            dark-before-one: rgb(127, 184, 250),    dark-before-two: rgb(12, 114, 197),
-            dark-after-one: rgb(7, 113, 200),       dark-after-two: rgb(56, 117, 216),
-            light-before-one: rgb(198, 204, 255),       light-before-two: rgb(18, 72, 248),
-            light-after-one: rgb(208, 213, 255),        light-after-two: rgb(65, 85, 255)
+            dark-before-one: var(--dark-primary-1-a),    dark-before-two: var(--dark-primary-1-b),
+            dark-after-one: var(--dark-primary-1-c),       dark-after-two: var(--dark-primary-1-d),
+            light-before-one: var(--light-primary-1-a),       light-before-two: var(--light-primary-1-b),
+            light-after-one: var(--light-primary-1-c),        light-after-two: var(--light-primary-1-d)
         ));
         @include square-diagonal-split((
             className: "square-2-d",
@@ -208,42 +209,45 @@ export default {
             top: 25,
             right: 255,
             rotate: -50deg,
-            dark-before-one: rgb(166, 219, 255),    dark-before-two: rgb(69, 164, 243),
-            dark-after-one: rgb(35, 139, 224),       dark-after-two: rgb(56, 117, 216),
-            light-before-one: rgb(198, 204, 255),       light-before-two: rgb(18, 72, 248),
-            light-after-one: rgb(208, 213, 255),        light-after-two: rgb(65, 85, 255)
+            dark-before-one: var(--dark-primary-1-a),    dark-before-two: var(--dark-primary-1-b),
+            dark-after-one: var(--dark-primary-1-c),       dark-after-two: var(--dark-primary-1-d),
+            light-before-one: var(--light-primary-1-a),       light-before-two: var(--light-primary-1-b),
+            light-after-one: var(--light-primary-1-c),        light-after-two: var(--light-primary-1-d)
         ));
         &.square-3-a {
+            transition: all 0.7s linear;
             position: absolute;
             z-index: 2;
             height: 160px;
             width: 190px;
             top: 120px;
-            right: 180px;
-            background-color: rgb(46, 46, 46);
-            box-shadow: -1px 1px 12px rgb(27, 27, 27);
+            right: 172px;
+            background-color: var(--active-neutral-2);
+            box-shadow: var(--active-neutral-2-shadow);
             opacity: 1;
             transform: perspective(400px) rotateY(-20deg) skewX(-7deg);
         }
         &.square-3-b {
+            transition: all 0.7s linear;
             z-index: 3;
             height: 90px;
             width: 90px;
             top: 90px;
             right: 115px;
-            background-color: rgb(46, 46, 46);
-            box-shadow: -1px 1px 12px rgb(27, 27, 27);
+            background-color: var(--active-neutral-2);
+            box-shadow: var(--active-neutral-2-shadow);
             opacity: 1;
             transform: rotateZ(25deg);
         }
         &.square-3-c {
+            transition: all 0.7s linear;
             z-index: 6;
             height: 35px;
             width: 35px;
             top: 180px;
             right: 370px;
-            background-color: rgb(46, 46, 46);
-            box-shadow: -1px 1px 12px rgb(27, 27, 27);
+            background-color: var(--active-neutral-2);
+            box-shadow: var(--active-neutral-2-shadow);
             opacity: 1;
             transform: rotateZ(25deg);
         }
@@ -254,7 +258,7 @@ export default {
             width: 150px,
             height: 100px,
             border-radius: 50%,
-            border: 2px solid rgb(56, 117, 216),
+            border: 2px solid var(--active-primary-line-1),
             transform: rotate(28deg),
             z-index: 1
         ));
@@ -265,7 +269,7 @@ export default {
             width: 80px,
             height: 300px,
             border-radius: 50%,
-            border: 2px solid rgb(56, 117, 216),
+            border: 2px solid var(--active-primary-line-1),
             transform: rotate(-215deg),
             z-index: 1
         ));
@@ -276,7 +280,7 @@ export default {
             width: 140px,
             height: 140px,
             border-radius: 50%,
-            border: 2px solid rgb(56, 117, 216),
+            border: 2px solid var(--active-primary-line-1),
             transform: rotate(180deg),
             z-index: 1
         ));
@@ -287,7 +291,7 @@ export default {
             width: 60px,
             height: 90px,
             border-radius: 50%,
-            border: 2px solid rgba(185, 185, 185, 0.719),
+            border: 2px solid var(--active-secondary-line-1),
             transform: rotate(110deg),
             z-index: 1
         ));
@@ -298,7 +302,7 @@ export default {
             width: 30px,
             height: 130px,
             border-radius: 50%,
-            border: 2px solid rgba(185, 185, 185, 0.719),
+            border: 2px solid var(--active-secondary-line-1),
             transform: rotate(-30deg),
             z-index: 1
         ));

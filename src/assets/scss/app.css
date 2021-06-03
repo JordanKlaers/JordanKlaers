@@ -3,15 +3,40 @@ body {
   --background-color: white;
   --app-height: 100%;
   --dark-element-bg-color: #f05c5c;
-  --dark-app-bg-color: #1a1a1a;
-  --dark-text-color: white;
-  --dark-neutral-1: #404040;
-  --dark-neutral-2: #595959;
-  --light-neutral-1: #d9d9d9;
-  --light-neutral-2: #cccccc;
-  --light-text-color: #111517;
-  --light-app-bg-color: #fafafa;
   --light-element-bg-color: white;
+  --dark-app-bg-color: #1c2025;
+  --light-app-bg-color: #fafafa;
+  --dark-text-color: white;
+  --light-text-color: #111517;
+  --bio-placement: 100px;
+  --dark-neutral-1: #2d2f3a;
+  --dark-neutral-1-shadow: -1px 0px 12px 2px #323232;
+  --dark-neutral-2: #1c2025;
+  --dark-neutral-3: #242830;
+  --light-neutral-1: white;
+  --light-neutral-2: #d9d9d9;
+  --light-neutral-2-shadow: -1px 0px 12px 2px #d9d9d9;
+  --light-neutral-3: #d7d7d7;
+  --light-primary-1-a: #ffef7a;
+  --light-primary-1-b: #ffc709;
+  --light-primary-1-c: #ffc541;
+  --light-primary-1-d: #d9ff41;
+  --light-secondary-1-a: #36dd4c;
+  --light-secondary-1-b: rgba(7, 129, 3, 0.5);
+  --light-secondary-1-c: rgba(45, 248, 18, 0.3);
+  --light-secondary-1-d: #005c08;
+  --dark-primary-1-a: rgba(163, 204, 251, 0.8);
+  --dark-primary-1-b: #0c72c5;
+  --dark-primary-1-c: rgba(0, 140, 255, 0.5);
+  --dark-primary-1-d: #3875d8;
+  --dark-secondary-1-a: #a969fd;
+  --dark-secondary-1-b: rgba(116, 9, 255, 0.5);
+  --dark-secondary-1-c: #5b00d1;
+  --dark-secondary-1-d: rgba(58, 3, 129, 0);
+  --dark-primary-line-1: var(--dark-secondary-1-c);
+  --dark-secondary-line-1: var(--dark-primary-1-b);
+  --light-primary-line-1: var(--light-secondary-1-b);
+  --light-secondary-line-1: var(--light-primary-1-b);
   --text-large: 20px;
   --text-regular: 16px;
 }
@@ -23,11 +48,16 @@ body #app {
   --active-box-shadow-color: rgba(0, 0, 0, 0.2);
   --active-element-bg-color: var(--dark-element-bg-color);
   --active-neutral-1: var(--dark-neutral-1);
+  --active-neutral-1-shadow: var(--dark-neutral-1-shadow);
   --active-neutral-2: var(--dark-neutral-2);
+  --active-neutral-2-shadow: var(--dark-neutral-2-shadow);
+  --active-neutral-3: var(--dark-neutral-3);
+  --active-primary-line-1: var(--dark-primary-line-1);
+  --active-secondary-line-1: var(--dark-secondary-line-1);
   --inactive-text-color: var(--light-text-color);
   --inactive-app-bg-color: var(--light-app-bg-color);
   --inactive-element-bg-color: var(--light-element-bg-color);
-  --scale-to-window-width: 1;
+  --global-scale-to-window-width: 1;
 }
 
 .card-container {
@@ -2591,5 +2621,7 @@ body, html {
   position: relative;
   transition: 1s;
   min-height: 100vh;
+  background-color: var(--active-app-bg-color);
+  background-color: var(--active-neutral-1);
   overflow-x: hidden;
 }

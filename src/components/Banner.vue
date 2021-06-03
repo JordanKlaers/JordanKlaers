@@ -1,8 +1,7 @@
 <template>
 	<div id="banner" class="p-30">
-		<span class="ft-xtr-bold ft-sz-20">Where in the world?</span>
 		<span
-			class="ft-normal m-lft-auto ft-sz-18 dark-mode"
+			class="ft-normal m-rgt-auto ft-sz-18 dark-mode"
 			@click="clickHandler">
 			<i class='icon-moon-stroke ft-sz-16 p-rgt-15'></i>Dark Mode
 		</span>
@@ -45,8 +44,13 @@ export default {
 		},
 		setScale() {
 			let styles = document.getElementById('app').style;
-			let scale =  Math.min(window.innerWidth, 1000)/1000;
-			styles.setProperty('--scale-to-window-width', scale);
+			let globalScale =  Math.min(window.innerWidth, 1000)/1000;
+			styles.setProperty('--global-scale-to-window-width', globalScale);
+
+			let bioScale = Math.min(window.innerWidth * 0.2, 100);
+			console.log('bioScale: ', bioScale);
+			styles.setProperty('--bio-placement', `${bioScale}px`);
+
 		}
 	},
 	watch: {}
@@ -55,16 +59,18 @@ export default {
 <style lang='scss' type="text/scss">
 @import '~_scss_/_mixins';
 #banner {
-	visibility: hidden;
+	// visibility: hidden;
 	@include box-shadow((color: rgba(0,0,0,0.05))...);
 	display: flex;
 	transition: 1s;
 	color: var(--active-text-color);
-	background-color: var(--active-app-bg-color);
+	background-color: var(--active-neutral-3);
 	position: absolute;
-    z-index: 3;
+    z-index: 1;
     left: 0;
     right: 0;
+	height: 470px;
+	clip-path: polygon(0px 0px, 100% 0%, 100% 170px, 0% 100%, 0px 0px);
 	span {
 		display: inline-block;
 		line-height: 20px;
