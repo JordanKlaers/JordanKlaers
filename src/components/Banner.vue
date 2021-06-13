@@ -18,7 +18,8 @@ export default {
 		return {
 			clickHandler: debounce(this.toggleMode, 300, { 'leading': true, 'trailing': false }),
 			windowResizeScaleHandler: debounce(this.setScale, 300, { 'leading': false, 'trailing': true }),
-			mode: 'dark'
+			activeMode: 'dark',
+			inactiveMode: 'light'
 		}
 	},
 	beforeMount() {
@@ -31,13 +32,19 @@ export default {
 		toggleMode() {
 			this.isLight = !this.isLight;
 			let styles = document.getElementById('app').style;
-			if (this.mode == 'light') this.mode = 'dark';
-			else if (this.mode == 'dark') this.mode = 'light';
+			if (this.activeMode == 'light') {
+				this.activeMode = 'dark';
+				this.inactiveMode = 'light';
+			}
+			else if (this.activeMode == 'dark') {
+				this.activeMode = 'light';
+				this.inactiveMode = 'dark';
+			}
 			this.active.forEach(activeStyle => {
-				styles.setProperty(activeStyle, this[this.mode][activeStyle.replace('active', this.mode)]);
+				styles.setProperty(activeStyle, this[this.activeMode][activeStyle.replace('active', this.activeMode)]);
 			});
 			this.inactive.forEach(inactiveStyle => {
-				styles.setProperty(inactiveStyle, this[this.mode][inactiveStyle.replace('inactive', this.mode)]);
+				styles.setProperty(inactiveStyle, this[this.inactiveMode][inactiveStyle.replace('inactive', this.inactiveMode)]);
 			});
 			Array.from(document.querySelectorAll('.light')).forEach(el => el.classList.toggle('visible'));
 			Array.from(document.querySelectorAll('.dark')).forEach(el => el.classList.toggle('visible'));

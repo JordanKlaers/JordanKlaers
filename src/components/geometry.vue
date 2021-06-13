@@ -151,6 +151,7 @@ export default {
             dark-after-one: var(--dark-secondary-1-c),       dark-after-two: var(--dark-secondary-1-d),
             light-before-one: var(--light-secondary-1-c),    light-before-two: var(--light-secondary-1-d),
             light-after-one: var(--light-secondary-1-a),       light-after-two: var(--light-secondary-1-b),
+            light-after-gradient-dir: to bottom
         ));
         @include square-diagonal-split((
             className: "square-1-b",
@@ -163,6 +164,7 @@ export default {
             dark-after-one: var(--dark-secondary-1-c),       dark-after-two: var(--dark-secondary-1-d),
             light-before-one: var(--light-secondary-1-c),    light-before-two: var(--light-secondary-1-d),
             light-after-one: var(--light-secondary-1-a),       light-after-two: var(--light-secondary-1-b),
+            light-after-gradient-dir: to bottom,
             z-index: 2
         ));
         @include square-diagonal-split((

@@ -1,0 +1,16 @@
+h1 {
+    font-size: 2.5em;
+}
+
+button {
+    border: none;
+    padding: 0.7em 2em;
+    color: var(--inactive-text-color);
+    font-size: 1em;
+    border-radius: 1em;
+    font-weight: bold;
+    background-color: var(--inactive-neutral-2);
+    &:hover {
+        cursor: pointer;
+    }
+}

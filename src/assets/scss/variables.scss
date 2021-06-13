@@ -33,10 +33,10 @@ body {
 	--light-primary-1-c: rgb(255, 197, 65);
 	--light-primary-1-d: rgb(217, 255, 65);
 
-	--light-secondary-1-a: rgba(54, 221, 76, 1);
-	--light-secondary-1-b: rgba(7, 129, 3, 0.5);
-	--light-secondary-1-c: rgba(45, 248, 18, 0.3);
-	--light-secondary-1-d: rgb(0, 92, 8);
+	--light-secondary-1-a: rgba(45, 248, 18, 1);
+	--light-secondary-1-b: rgba(7, 129, 3, 1);
+	--light-secondary-1-c: rgb(0, 167, 22);				//variant 1-c is the main secondary color
+	--light-secondary-1-d: rgb(31, 158, 41);
 
 	--dark-primary-1-a: rgba(163, 204, 251, 0.8);
 	--dark-primary-1-b: rgb(12, 114, 197);
@@ -75,11 +75,14 @@ body {
 
 		--active-primary-line-1: var(--dark-primary-line-1);
 		--active-secondary-line-1: var(--dark-secondary-line-1);
+		--active-secondary-1-c: var(--dark-secondary-1-c);
 
 
 		--inactive-text-color: var(--light-text-color);
 		--inactive-app-bg-color: var(--light-app-bg-color);
 		--inactive-element-bg-color: var(--light-element-bg-color);
+
+		--inactive-neutral-2: var(--light-neutral-2);
 
 		--global-scale-to-window-width: 1;
 	}
