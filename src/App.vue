@@ -1,5 +1,5 @@
 <template>
-	<div id="app">
+	<div id="app" class="ie-fallback">
 		<banner></banner>
 		<geometry></geometry>
 		<bio></bio>
@@ -28,7 +28,7 @@ export default {
 	},
 	mounted() {
 		if (this.isInternetExplorer) {
-			this.$refs['card-container'].classList.add('ie-fallback');
+			//this.$refs['card-container'].classList.add('ie-fallback');
 		}
 	}
 };

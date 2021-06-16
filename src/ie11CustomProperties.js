@@ -1,6 +1,8 @@
 /*! ie11CustomProperties.js v3.0.6 | MIT License | https://git.io/fjXMN */
 !function () {
 	'use strict';
+
+	window['cssVariables'] = {};
 	// check for support
 	var testEl = document.createElement('i');
 	testEl.style.setProperty('--x', 'y');
@@ -230,8 +232,16 @@
 		var rules = style.sheet.rules, i=0, rule; // cssRules = CSSRuleList, rules = MSCSSRuleList
 		while (rule = rules[i++]) {
 			const found = parseRewrittenStyle(rule.style);
-			if (found.getters) addGettersSelector(rule.selectorText, found.getters);
-			if (found.setters) addSettersSelector(rule.selectorText, found.setters);
+			if (found.getters) {
+				addGettersSelector(rule.selectorText, found.getters);
+			}
+			if (found.setters) {
+				window.cssVariables[rule.selectorText] = Object.keys(found.setters).reduce((acc, cssVariable) => {
+					if (!found.setters[cssVariable].includes("var(--")) acc[('--' + cssVariable).trim()] = found.setters[cssVariable].trim();
+					return acc;
+				}, {});
+				addSettersSelector(rule.selectorText, found.setters);
+			}
 
 			// mediaQueries: redraw the hole document
 			// better add events for each element?
@@ -419,7 +429,8 @@
 			var value = styleComputeValueWidthVars(style, valueWithVar, details);
 			//if (value==='initial') value = initials[prop];
 			if (important) value += ' !important';
-			for (var i=0, item; item=el.ieCPSelectors[prop][i++];) { // todo: split and use requestAnimationFrame?
+			for (var i=0, item; item=el.ieCPSelectors[prop][i++];) {
+				// todo: split and use requestAnimationFrame?
 				if (item.selector === '%styleAttr') {
 					el.style[prop] = value;
 				} else {
@@ -443,7 +454,9 @@
 			document.head.appendChild(styleEl);
 			el.ieCP_styleEl = styleEl;
 		}
-		if (el.ieCP_styleEl) el.ieCP_styleEl.innerHTML = css;
+		if (el.ieCP_styleEl) {
+			el.ieCP_styleEl.innerHTML = css;
+		}
 	}
 	/* */
 
@@ -451,7 +464,9 @@
 		if (!target) return;
 		var els = target.querySelectorAll('[iecp-needed]');
 		if (target.hasAttribute && target.hasAttribute('iecp-needed')) drawElement(target); // self
-		for (var i = 0, el; el = els[i++];) drawElement(el); // tree
+		for (var i = 0, el; el = els[i++];) {
+			drawElement(el); // tree
+		}
 	}
 	// draw queue
 	let drawQueue = new Set();

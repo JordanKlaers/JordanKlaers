@@ -2,11 +2,11 @@
 	"env": {
 		"browser": true,
 		"commonjs": true,
-		"es6": true,
+		"es5": true,
 		"node": true
 	},
 	"parserOptions":{
-		"ecmaVersion": 8
+		"ecmaVersion": 5
 	},
 	"rules": {}
 }

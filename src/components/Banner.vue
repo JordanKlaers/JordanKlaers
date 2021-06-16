@@ -41,7 +41,19 @@ export default {
 				this.inactiveMode = 'dark';
 			}
 			this.active.forEach(activeStyle => {
-				styles.setProperty(activeStyle, this[this.activeMode][activeStyle.replace('active', this.activeMode)]);
+				/*
+					if there is a css variable for the current mode, that matches the name of the active variable, update to that value
+					for example if the active variable is "--active-background-color" and the mode is "dark", look for "--dark-background-color"
+					via this['dark']["--dark-background-color"]
+				*/
+				let currentModeColorValue = this[this.activeMode][activeStyle.replace('active', this.activeMode)];
+				if (currentModeColorValue) {
+					styles.setProperty(activeStyle, currentModeColorValue);
+				} 
+				/*
+					If there is not variable/value for the current mode matching the active variable name, then check if there is an inactive and swap to that
+					This allows for a 
+				*/
 			});
 			this.inactive.forEach(inactiveStyle => {
 				styles.setProperty(inactiveStyle, this[this.inactiveMode][inactiveStyle.replace('inactive', this.inactiveMode)]);

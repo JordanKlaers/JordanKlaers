@@ -1,0 +1,67 @@
+body {
+	--section-container-width: 768px;
+	--background-color: white;
+	--app-height: 100%;
+	
+	--element-bg-color: rgb(240, 92, 92);
+	--app-bg-color: rgb(28, 32, 37);
+	--text-color: rgb(255, 255, 255);
+	
+	--bio-placement: 100px;
+
+	--text-large: 20px;
+	--text-regular: 16px;
+	--box-shadow-color: rgba(0,0,0,0.2);
+
+	--global-scale-to-window-width: 1;
+	//geometry color variables
+	//variable name format: category - color group - variant
+	--neutral-1: rgb(28, 32, 37);
+	--neutral-2: rgb(45, 47, 58);
+	--neutral-2-shadow: -1px 0px 12px 2px rgba(50, 50, 50, 1);
+	--neutral-3: rgb(36, 40, 48);
+	
+	
+	--primary-1-a: rgba(163, 204, 251, 0.8);
+	--primary-1-b: rgb(12, 114, 197);
+    --primary-1-c: rgba(0, 140, 255, 0.5);
+	--primary-1-d: rgb(56, 117, 216);
+	
+	--secondary-1-a: rgba(169, 105, 253, 1);
+	--secondary-1-b: rgba(116, 9, 255, 0.5);
+    --secondary-1-c: rgb(91, 0, 209);
+	--secondary-1-d: rgba(58, 3, 129, 0);
+	
+	--primary-line-1: var(--secondary-1-c);
+	--secondary-line-1: var(--primary-1-b);
+	/*
+	--inactive-text-color: var(--light-text-color);
+	--inactive-app-bg-color: var(--light-app-bg-color);
+	--inactive-element-bg-color: var(--light-element-bg-color);
+
+	--inactive-neutral-2: var(--light-neutral-2);
+	*/
+	&[data-mode="light"] {
+		--element-bg-color: rgb(255, 255, 255);
+		--app-bg-color: rgb(250, 250, 250);
+		--text-color: rgb(17, 21, 23);
+		
+		--neutral-1: rgb(224, 224, 224);
+		--neutral-2: rgb(238, 238, 238);
+		--neutral-2-shadow: -1px 0px 12px 2px rgb(238, 238, 238);
+		--neutral-3: rgb(215, 215, 215);
+		
+		--primary-1-a: rgb(255, 239, 122);
+		--primary-1-b: rgb(255, 199, 9);
+		--primary-1-c: rgb(255, 197, 65);
+		--primary-1-d: rgb(217, 255, 65);
+		
+		--secondary-1-a: rgba(45, 248, 18, 1);
+		--secondary-1-b: rgba(7, 129, 3, 1);
+		--secondary-1-c: rgb(0, 167, 22);				//variant 1-c is the main secondary color
+		--secondary-1-d: rgb(31, 158, 41);
+	
+		--primary-line-1: var(--secondary-1-b);
+		--secondary-line-1: var(--primary-1-b);
+	}
+}
