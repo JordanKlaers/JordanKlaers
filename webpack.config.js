@@ -25,7 +25,8 @@ module.exports = {
 			'_scss_': resolve('./src/assets/scss'),
 			'_icomoon_': resolve('./src/assets/icomoon'),
 			'_images_': resolve('./src/assets/image/'),
-			'_store_': resolve('./src/store')
+			'_store_': resolve('./src/store'),
+			'_gsap_': resolve('./src/assets/scripts/gsap')
 		}
 	},
 	// optimization: {

@@ -53,22 +53,22 @@ export default {
 	@include box-shadow-with-hover(('color-hover': rgba(0,0,0,0.2))...);
 	&__tags {
 		transition: 1s;
-		background: var(--active-element-bg-color);
+		background: var(--element-bg-color);
 		border-color: transparent;
 		border-radius: 7px;
 		.multiselect__tag {
 			//fallback for ie
 			background: hsl(209, 23%, 22%);
 			//
-			background: var(--inactive-element-bg-color);
+			background: var(--inverse-element-bg-color);
 			span:first-of-type {
 				//fallback for IE
 				color: hsl(0, 0%, 100%);
 				//
-				color: var(--inactive-text-color);
+				color: var(--inverse-text-color);
 			}
 			&-icon::after {
-				color: var(--inactive-text-color);
+				color: var(--inverse-text-color);
 			}
 			&-icon:hover {
 				//fallback for ie
@@ -79,7 +79,7 @@ export default {
 	}
 	&__tag {
 		overflow: visible;
-		background: var(--active-element-bg-color);
+		background: var(--element-bg-color);
 	}
 	&__tag-icon {
 		transition: 0.5s;
@@ -102,8 +102,8 @@ export default {
 		margin-bottom: 8px;
 		margin-left: 10px;
 		padding: 0;
-		background-color: var(--active-element-bg-color);
-		color: var(--active-text-color);
+		background-color: var(--element-bg-color);
+		color: var(--text-color);
 		&::placeholder {
 			color: #999;
 			font-size: 14px;
@@ -111,11 +111,11 @@ export default {
 	}
 	&__placeholder {
 		transition: 1s;
-		color: var(--active-text-color);
+		color: var(--text-color);
 		margin-left: 10px;
 	}
 	&__content-wrapper {
-		border-color: var(--active-element-bg-color);
+		border-color: var(--element-bg-color);
 		border-bottom-right-radius: 7px;
 		border-bottom-left-radius: 7px;
 	}
@@ -127,8 +127,8 @@ export default {
 		color: hsl(200, 15%, 8%);
 		background: hsl(0, 0%, 98%);
 		//
-		color: var(--active-text-color);
-		background: var(--active-app-bg-color);
+		color: var(--text-color);
+		background: var(--app-bg-color);
 		padding: 8px;
 		min-height: 32px;
 		span:first-of-type {
@@ -138,12 +138,12 @@ export default {
 			//fallback for IE
 			background: hsl(207, 26%, 17%);
 			//
-			background: var(--inactive-app-bg-color);
+			background: var(--inverse-app-bg-color);
 			span:first-of-type {
 				//fallback for IE
 				color: hsl(0, 0%, 100%);
 				//
-				color: var(--inactive-text-color);
+				color: var(--inverse-text-color);
 			}
 		}
 		&--highlight#{&}--selected {

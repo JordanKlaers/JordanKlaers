@@ -12,19 +12,21 @@ export default {
 		}
 	},
 	mounted() {
-		console.log("start", this.isInternetExplorer);
-		const properties = this.isInternetExplorer ? this.getCSSCustomPropIndexFallBack() : this.getCSSCustomPropIndex();
-		console.log("css properties: ", properties);
-		properties && properties.forEach(variable => {
-			if (variable[0].includes('--light-')) this.light[variable[0]] = variable[1];
-			if (variable[0].includes('--dark-')) this.dark[variable[0]] = variable[1];
-			if (variable[0].includes('--active-') && !this.active.includes(variable[0])) this.active.push(variable[0]);
-			if (variable[0].includes('--inactive-') && !this.inactive.includes(variable[0])) this.inactive.push(variable[0]);
-		});
-		console.log("light: ", this.light);
-		console.log("dark :", this.dark);
-		console.log("active: ", this.active);
-		console.log("inactive: ", this.inactive);
+		/*
+			console.log("start", this.isInternetExplorer);
+			const properties = this.isInternetExplorer ? this.getCSSCustomPropIndexFallBack() : this.getCSSCustomPropIndex();
+			console.log("css properties: ", properties);
+			properties && properties.forEach(variable => {
+				if (variable[0].includes('--light-')) this.light[variable[0]] = variable[1];
+				if (variable[0].includes('--dark-')) this.dark[variable[0]] = variable[1];
+				if (variable[0].includes('--active-') && !this.active.includes(variable[0])) this.active.push(variable[0]);
+				if (variable[0].includes('--inactive-') && !this.inactive.includes(variable[0])) this.inactive.push(variable[0]);
+			});
+			console.log("light: ", this.light);
+			console.log("dark :", this.dark);
+			console.log("active: ", this.active);
+			console.log("inactive: ", this.inactive);
+		*/
 	},
     methods: {
         isSameDomain(styleSheet) {

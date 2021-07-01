@@ -11,22 +11,22 @@
 }
 
 //margin
-@include util(m-top-auto, margin-top, auto, true);
-@include util(m-btm-auto, margin-bottom, auto, true);
-@include util(m-lft-auto, margin-left, auto, true);
-@include util(m-rgt-auto, margin-right, auto, true);
+@include util(m-top-auto, margin-top, auto, false);
+@include util(m-btm-auto, margin-bottom, auto, false);
+@include util(m-lft-auto, margin-left, auto, false);
+@include util(m-rgt-auto, margin-right, auto, false);
 @include util(m-auto, margin, auto, false);
 
 @for $i from 0 through 60 {
-	@include util('m-top-#{$i}', margin-top, #{$i}px, true);
-	@include util('m-btm-#{$i}', margin-bottom, #{$i}px, true);
-	@include util('m-lft-#{$i}', margin-left, #{$i}px, true);
-	@include util('m-rgt-#{$i}', margin-right, #{$i}px, true);
+	@include util('m-top-#{$i}', margin-top, #{$i}px, false);
+	@include util('m-btm-#{$i}', margin-bottom, #{$i}px, false);
+	@include util('m-lft-#{$i}', margin-left, #{$i}px, false);
+	@include util('m-rgt-#{$i}', margin-right, #{$i}px, false);
 	@include util('m-#{$i}', margin, #{$i}px, false);
-	@include util('p-top-#{$i}', padding-top, #{$i}px, true);
-	@include util('p-btm-#{$i}', padding-bottom, #{$i}px, true);
-	@include util('p-lft-#{$i}', padding-left, #{$i}px, true);
-	@include util('p-rgt-#{$i}', padding-right, #{$i}px, true);
+	@include util('p-top-#{$i}', padding-top, #{$i}px, false);
+	@include util('p-btm-#{$i}', padding-bottom, #{$i}px, false);
+	@include util('p-lft-#{$i}', padding-left, #{$i}px, false);
+	@include util('p-rgt-#{$i}', padding-right, #{$i}px, false);
 	@include util('p-#{$i}', padding, #{$i}px, false);
 	$i: $i + 5;
 }
@@ -42,5 +42,5 @@
 	font-weight: 800;
 }
 
-@include util(ft-sz-18, font-size, 18px, true);
-@include util(ft-sz-20, font-size, 20px, true);
+@include util(ft-sz-18, font-size, 18px, false);
+@include util(ft-sz-20, font-size, 20px, false);

@@ -16,15 +16,16 @@
         <span class="shape square-3-a"></span>
         <span class="shape square-3-b"></span>
         <span class="shape square-3-c"></span>
-
-        <span
-            v-for="curve in curveElements"
-            :key="curve.class"
-            class="shape"
-            :id="curve.id"
-            :style="`clip-path: polygon(${setClipPath(curve.degree, curve.startDegree)})`"
-            >
-        </span>
+        <template v-if="!isInternetExplorer">
+            <span
+                v-for="curve in curveElements"
+                :key="curve.class"
+                class="shape"
+                :id="curve.id"
+                :style="setClipPath(curve.degree, curve.startDegree)"
+                >
+            </span>
+        </template>
 	</div>
 </template>
 
@@ -37,13 +38,14 @@ export default {
             curveElements: [
                 { id: 'curve-1-a', degree: 80, startDegree: 0 },
                 { id: 'curve-1-b', degree: 80, startDegree: 45 },
-                { id: 'curve-1-c', degree: 150, startDegree: 15 },
+                { id: 'curve-1-c', degree: 80, startDegree: 75 },
                 { id: 'curve-2-a', degree: 130, startDegree: 20 },
                 { id: 'curve-2-b', degree: 130, startDegree: 20 }
             ]
         }
     },
     mounted() {
+
     },
     methods: {
         setClipPath(degree, startDegree) {
@@ -56,7 +58,21 @@ export default {
             path += closurePoints.slice(Math.floor(startDegree / 90), Math.floor((degree + startDegree) / 90) + 1).join('');
             //add the final point
             path += `,${Math.floor(this.x(degree + startDegree, 50))+50}% ${Math.floor(this.y(degree + startDegree, 50))+50}%`;
-            return path;
+            return `clip-path: polygon(${path})`;
+        },
+        setClipPathSVG(degree, startDegree, asClipPathOnly) {
+            // return '.5 .5, 0.5 1, 1 1, 1 .5, .5 .5';
+            
+            //start at center
+            let path = '.5 .5';
+            //add first point that matches the starting degree (0 = bottom, 90 = right, 180 = top, 270 = left, 360 = bottom)
+            path += `,${this.x(startDegree, .5) +.5} ${this.y(startDegree, .5)+.5}`;
+            //add the corner points between the start and end degree, this prevents the arc from being cut off if it exceeds 180 degrees
+            let  closurePoints = [', 1 1', ', 1 0',  ', 0 0', ', 0 1'];
+            path += closurePoints.slice(Math.floor(startDegree / 90), Math.floor((degree + startDegree) / 90) + 1).join('');
+            //add the final point
+            path += `,${(this.x(degree + startDegree, .5))+.5} ${(this.y(degree + startDegree, .5))+.5}, 0.5 0.5`;
+            return path.replace(/\%/g, '');
         },
         x: (degree, radius) => {
            return (Math.sin(degree*(Math.PI/180))*radius);
@@ -130,14 +146,18 @@ export default {
         border: map-get($args, border);
         transform: map-get($args, transform);
         z-index: map-get($args, z-index);
+        // background-color: yellow;
     }
 }
+
+
 #geometry-container {
     position: absolute;
     z-index: 2;
     height: 75vh;
     width: 0px;
     right: 0;
+    top: 0;
     .shape {
         position: absolute;
         overflow: hidden;
@@ -147,10 +167,10 @@ export default {
             width: 160,
             top: -35,
             right: -20,
-            dark-before-one: var(--dark-secondary-1-a),    dark-before-two: var(--dark-secondary-1-b),
-            dark-after-one: var(--dark-secondary-1-c),       dark-after-two: var(--dark-secondary-1-d),
-            light-before-one: var(--light-secondary-1-c),    light-before-two: var(--light-secondary-1-d),
-            light-after-one: var(--light-secondary-1-a),       light-after-two: var(--light-secondary-1-b),
+            dark-before-one: var(--secondary-1-a),    dark-before-two: var(--secondary-1-b),
+            dark-after-one: var(--secondary-1-c),       dark-after-two: var(--secondary-1-d),
+            light-before-one: var(--secondary-1-c),    light-before-two: var(--secondary-1-d),
+            light-after-one: var(--secondary-1-a),       light-after-two: var(--secondary-1-b),
             light-after-gradient-dir: to bottom
         ));
         @include square-diagonal-split((
@@ -160,13 +180,17 @@ export default {
             top: 180,
             right: 15,
             rotate: 45deg,
-            dark-before-one: var(--dark-secondary-1-a),    dark-before-two: var(--dark-secondary-1-b),
-            dark-after-one: var(--dark-secondary-1-c),       dark-after-two: var(--dark-secondary-1-d),
-            light-before-one: var(--light-secondary-1-c),    light-before-two: var(--light-secondary-1-d),
-            light-after-one: var(--light-secondary-1-a),       light-after-two: var(--light-secondary-1-b),
+            dark-before-one: var(--secondary-1-a),    dark-before-two: var(--secondary-1-b),
+            dark-after-one: var(--secondary-1-c),       dark-after-two: var(--secondary-1-d),
+            light-before-one: var(--secondary-1-c),    light-before-two: var(--secondary-1-d),
+            light-after-one: var(--secondary-1-a),       light-after-two: var(--secondary-1-b),
             light-after-gradient-dir: to bottom,
             z-index: 2
         ));
+        &.square-1-b {
+            --rotate: 0deg;
+            transform: perspective(400px) rotateY(var(--rotate)) rotateZ(45deg);
+        }
         @include square-diagonal-split((
             className: "square-2-a",
             height: 130,
@@ -174,10 +198,10 @@ export default {
             top: 68,
             right: 107,
             rotate: -135deg,
-            dark-before-one: var(--dark-primary-1-a),    dark-before-two: var(--dark-primary-1-b),
-            dark-after-one: var(--dark-primary-1-c),       dark-after-two: var(--dark-primary-1-d),
-            light-before-one: var(--light-primary-1-a),       light-before-two: var(--light-primary-1-b),
-            light-after-one: var(--light-primary-1-c),        light-after-two: var(--light-primary-1-d)
+            dark-before-one: var(--primary-1-a),    dark-before-two: var(--primary-1-b),
+            dark-after-one: var(--primary-1-c),       dark-after-two: var(--primary-1-d),
+            light-before-one: var(--primary-1-a),       light-before-two: var(--primary-1-b),
+            light-after-one: var(--primary-1-c),        light-after-two: var(--primary-1-d)
         ));
         @include square-diagonal-split((
             className: "square-2-b",
@@ -186,10 +210,10 @@ export default {
             top: 230,
             right: 117,
             rotate: 135deg,
-            dark-before-one: var(--dark-primary-1-a),    dark-before-two: var(--dark-primary-1-b),
-            dark-after-one: var(--dark-primary-1-c),       dark-after-two: var(--dark-primary-1-d),
-            light-before-one: var(--light-primary-1-a),       light-before-two: var(--light-primary-1-b),
-            light-after-one: var(--light-primary-1-c),        light-after-two: var(--light-primary-1-d),
+            dark-before-one: var(--primary-1-a),    dark-before-two: var(--primary-1-b),
+            dark-after-one: var(--primary-1-c),       dark-after-two: var(--primary-1-d),
+            light-before-one: var(--primary-1-a),       light-before-two: var(--primary-1-b),
+            light-after-one: var(--primary-1-c),        light-after-two: var(--primary-1-d),
             z-index: 2
         ));
         @include square-diagonal-split((
@@ -199,11 +223,16 @@ export default {
             top: 270,
             right: 260,
             rotate: -25deg,
-            dark-before-one: var(--dark-primary-1-a),    dark-before-two: var(--dark-primary-1-b),
-            dark-after-one: var(--dark-primary-1-c),       dark-after-two: var(--dark-primary-1-d),
-            light-before-one: var(--light-primary-1-a),       light-before-two: var(--light-primary-1-b),
-            light-after-one: var(--light-primary-1-c),        light-after-two: var(--light-primary-1-d)
+            dark-before-one: var(--primary-1-a),    dark-before-two: var(--primary-1-b),
+            dark-after-one: var(--primary-1-c),       dark-after-two: var(--primary-1-d),
+            light-before-one: var(--primary-1-a),       light-before-two: var(--primary-1-b),
+            light-after-one: var(--primary-1-c),        light-after-two: var(--primary-1-d)
         ));
+        &.square-2-c {
+            --rotateX: 0deg;
+            --translateY: 0px;
+            transform: rotateZ(-25deg) perspective(400px) rotateX(var(--rotateX)) translateY(var(--translateY));
+        }
         @include square-diagonal-split((
             className: "square-2-d",
             height: 20,
@@ -211,23 +240,27 @@ export default {
             top: 25,
             right: 255,
             rotate: -50deg,
-            dark-before-one: var(--dark-primary-1-a),    dark-before-two: var(--dark-primary-1-b),
-            dark-after-one: var(--dark-primary-1-c),       dark-after-two: var(--dark-primary-1-d),
-            light-before-one: var(--light-primary-1-a),       light-before-two: var(--light-primary-1-b),
-            light-after-one: var(--light-primary-1-c),        light-after-two: var(--light-primary-1-d)
+            dark-before-one: var(--primary-1-a),    dark-before-two: var(--primary-1-b),
+            dark-after-one: var(--primary-1-c),       dark-after-two: var(--primary-1-d),
+            light-before-one: var(--primary-1-a),       light-before-two: var(--primary-1-b),
+            light-after-one: var(--primary-1-c),        light-after-two: var(--primary-1-d)
         ));
+        &.square-2-d {
+            --right: 255px;
+            right: var(--right);
+        }
         &.square-3-a {
-            transition: all 0.7s linear;
+            transition: background-color 0.7s linear, box-shadow 0.7s linear, transition 0.28s linear, top 0.28s linear;
             position: absolute;
             z-index: 2;
             height: 160px;
             width: 190px;
             top: 120px;
             right: 172px;
-            background-color: var(--active-neutral-2);
-            box-shadow: var(--active-neutral-2-shadow);
+            background-color: var(--neutral-2);
+            box-shadow: var(--neutral-2-shadow);
             opacity: 1;
-            transform: perspective(400px) rotateY(-20deg) skewX(-7deg);
+            transform: perspective(400px) rotateY(159deg) skewX(-7deg);
         }
         &.square-3-b {
             transition: all 0.7s linear;
@@ -236,8 +269,8 @@ export default {
             width: 90px;
             top: 90px;
             right: 115px;
-            background-color: var(--active-neutral-2);
-            box-shadow: var(--active-neutral-2-shadow);
+            background-color: var(--neutral-2);
+            box-shadow: var(--neutral-2-shadow);
             opacity: 1;
             transform: rotateZ(25deg);
         }
@@ -248,8 +281,8 @@ export default {
             width: 35px;
             top: 180px;
             right: 370px;
-            background-color: var(--active-neutral-2);
-            box-shadow: var(--active-neutral-2-shadow);
+            background-color: var(--neutral-2);
+            box-shadow: var(--neutral-2-shadow);
             opacity: 1;
             transform: rotateZ(25deg);
         }
@@ -260,7 +293,7 @@ export default {
             width: 150px,
             height: 100px,
             border-radius: 50%,
-            border: 2px solid var(--active-primary-line-1),
+            border: 2px solid var(--primary-line-1),
             transform: rotate(28deg),
             z-index: 1
         ));
@@ -271,7 +304,7 @@ export default {
             width: 80px,
             height: 300px,
             border-radius: 50%,
-            border: 2px solid var(--active-primary-line-1),
+            border: 2px solid var(--primary-line-1),
             transform: rotate(-215deg),
             z-index: 1
         ));
@@ -282,10 +315,14 @@ export default {
             width: 140px,
             height: 140px,
             border-radius: 50%,
-            border: 2px solid var(--active-primary-line-1),
+            border: 2px solid var(--primary-line-1),
             transform: rotate(180deg),
             z-index: 1
         ));
+        &#curve-1-c {
+            --rotate: 180deg;
+            transform: rotate(var(--rotate));
+        }
         @include curve((
             id: "curve-2-a",
             top: 130px,
@@ -293,7 +330,7 @@ export default {
             width: 60px,
             height: 90px,
             border-radius: 50%,
-            border: 2px solid var(--active-secondary-line-1),
+            border: 2px solid var(--secondary-line-1),
             transform: rotate(110deg),
             z-index: 1
         ));
@@ -304,7 +341,7 @@ export default {
             width: 30px,
             height: 130px,
             border-radius: 50%,
-            border: 2px solid var(--active-secondary-line-1),
+            border: 2px solid var(--secondary-line-1),
             transform: rotate(-30deg),
             z-index: 1
         ));

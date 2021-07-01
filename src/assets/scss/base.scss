@@ -5,11 +5,11 @@ h1 {
 button {
     border: none;
     padding: 0.7em 2em;
-    color: var(--inactive-text-color);
+    color: var(--inverse-text-color);
     font-size: 1em;
     border-radius: 1em;
     font-weight: bold;
-    background-color: var(--inactive-neutral-2);
+    background-color: var(--inverse-neutral-2);
     &:hover {
         cursor: pointer;
     }

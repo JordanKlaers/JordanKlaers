@@ -41,8 +41,8 @@ export default {
 		display: flex;
 		border-radius: 7px;
 		transition: 1s;
-		background-color: var(--active-element-bg-color);
-		color: var(--active-text-color);
+		background-color: var(--element-bg-color);
+		color: var(--text-color);
 		@include box-shadow-with-hover(('color-hover': rgba(0,0,0,0.2))...);
 	}
 	input {
@@ -51,15 +51,15 @@ export default {
 		border: none;
 		text-overflow: ellipsis;
 		transition: 1s;
-		color: var(--active-text-color);
-		background-color: var(--active-element-bg-color);
+		color: var(--text-color);
+		background-color: var(--element-bg-color);
 		&:focus{
 			outline: none;
 		}
 		&::placeholder {
 			transition: 1s;
 			color: #999;
-			color: var(--active-text-color);
+			color: var(--text-color);
 		}
 	}
 }
