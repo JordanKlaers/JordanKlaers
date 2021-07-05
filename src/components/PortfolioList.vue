@@ -1,12 +1,15 @@
 <template>
 	<div>
-		<section class="code-example" v-for="(thing, index) in codeExamples" :key="index">
-			<component :is="thing"></component>
+		<section class="code-example" id="test" v-for="(thing, index) in codeExamples" :key="index" ref="sections">
+			<component :is="thing" :trigger="scrollTriggers[index]"></component>
 		</section>
+		<div style="height: 100vh"></div>
 	</div>
 </template>
 
 <script>
+// import * as gsap from '_gsap_';
+// import ScrollTrigger from '_gsap_/ScrollTrigger';
 import Thermostat from './portfolio/Thermostat.vue';
 export default {
 	name: 'portfolio-list',
@@ -17,37 +20,31 @@ export default {
 		return  {
 			codeExamples: [
 				'Thermostat'
-				// thermostat,
-				// thermostat,
-				// thermostat,
-				// thermostat,
-				// thermostat
-			]
+			],
+			scrollTriggers: []
 		}
 	},
 	mounted() {
-		// console.log(this);
-		// gsap.gsap.registerPlugin(ScrollTrigger);
-		// gsap.gsap.utils.toArray(".work").forEach((panel, i) => {
-		// 	ScrollTrigger.create({
-		// 		trigger: panel,
-		// 		start: "top 39%",
-		// 		end: "bottom 39%",
-		// 		scrub: true,
-		// 		animation: this.createAnimation(panel)
-		// 	});
-		// });
-	},
-	methods: {
-		createAnimation(element) {
-			// console.log("element thingy: ", element)
-			// let timelineMax = new gsap.TimelineMax();
-			// return timelineMax.fromTo(element, {
-			// 	opacity: 1
-			// }, {
-			// 	opacity: 0
-			// });
-		}
+		// this.$data._scrollTrigger.create({
+		// 	trigger: this.$el,
+
+		// })
+		this.$refs.sections.forEach(section => {
+			console.log('section: ', section);
+			this.scrollTriggers.push({
+				trigger: section,
+				start: "top top",
+				end: "bottom top",
+				scrub: 0.6,
+				snap: {
+					snapTo: "labels", // snap to the closest label in the timeline
+					duration: {min: 0.6, max: 0.6}, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
+					delay: 0, // wait 0.2 seconds from the last scroll event before doing the snapping
+					// ease: "power1.inOut" // the ease of the snap animation ("power3" by default)
+				}
+			});
+		})
+		
 	}
 };
 </script>
@@ -77,6 +74,6 @@ export default {
 .code-example {
 	height: 100vh;
 	width: 100vw;
-	border: 1px solid yellow;
+	// border: 1px solid yellow;
 }
 </style>

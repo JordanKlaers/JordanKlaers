@@ -31,7 +31,7 @@
 
 <script>
 export default {
-	name: 'geometry-container',
+	name: 'geometryContainer',
     data() {
         return {
             path: '',

@@ -12,7 +12,7 @@
 import { debounce, throttle } from 'lodash-es';
 import cssVariables from '_mixins_/cssVariables';
 export default {
-	name: 'bann1er',
+	name: 'banner',
 	mixins: [ cssVariables ],
 	data() {
 		return {

@@ -113,7 +113,7 @@ export default {
 #bio-container {
     transition: left 1s, color 1s;
     position: fixed;
-    top: 60px;
+    top: 4rem;
     z-index: 2;
     color: var(--text-color);
     margin-left: var(--bio-placement);
