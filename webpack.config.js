@@ -61,7 +61,7 @@ module.exports = {
 				}
 			},
 			{
-				test: /\.(jpg|jpeg|png|woff|woff2|eot|ttf|svg)$/,
+				test: /\.(jpg|jpeg|png|woff|woff2|eot|ttf|svg|PNG)$/,
 				use: ['url-loader']
 			},
 			{
@@ -81,7 +81,7 @@ module.exports = {
 	mode: "development",
 	plugins: [
 		new HtmlWebpackPlugin({
-			title: 'Output Management',
+			title: 'Jordan Klaers',
 			template: 'src/index.html',
 			chunks: ['ieCSSVariables_head', 'app']
 		}),
@@ -93,6 +93,6 @@ module.exports = {
 		filename: '[name].bundle.js',
 		path: path.resolve(__dirname, 'dist/'),
 		publicPath: 'http://localhost:9000'
-		// publicPath: './'
+		//publicPath: '/jordanklaers/'
 	}
 };

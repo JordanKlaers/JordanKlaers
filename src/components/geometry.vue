@@ -85,74 +85,9 @@ export default {
 </script>
 <style lang='scss' type="text/scss">
 @import '~_scss_/_mixins';
-@mixin square-diagonal-split($args) {
-    $rotate: if(map-get($args, rotate), map-get($args, rotate), 0deg);
-    $z-index: if(map-get($args, z-index), map-get($args, z-index), 1);
-    $visible-opacity: if(map-get($args, visible-opacity), map-get($args, visible-opacity), 1);
-    $dark-before-gradient-dir: if(map-get($args, dark-before-gradient-dir), map-get($args, dark-before-gradient-dir), to right);
-    $dark-after-gradient-dir: if(map-get($args, dark-after-gradient-dir), map-get($args, dark-after-gradient-dir), to bottom);
-    $light-before-gradient-dir: if(map-get($args, light-before-gradient-dir), map-get($args, light-before-gradient-dir), to right);
-    $light-after-gradient-dir: if(map-get($args, light-after-gradient-dir), map-get($args, light-after-gradient-dir), to right);
-    &.#{map-get($args, className)} {
-        height: map-get($args, height) * 1px;
-        width: map-get($args, width) * 1px;
-        right: map-get($args, right) * 1px;
-        top: map-get($args, top) * 1px;
-        z-index: $z-index;
-        transform: rotate($rotate);
-        &.dark.visible::before,
-        &.dark.visible::after,
-        &.light.visible::before,
-        &.light.visible::after {
-            opacity: $visible-opacity;
-        }
-        &::before {
-            transition: 1s;
-            opacity: 0;
-            content: '';
-            position: absolute;
-            height: map-get($args, height) * 1px;
-            width: map-get($args, width) * 1px;
-        }
-        &::after {
-            transition: 1s;
-            opacity: 0;
-            content: '';
-            position: absolute;
-            height: map-get($args, height) * 1.414px;
-            width: map-get($args, width) * 0.75px;
-            left: map-get($args, width) * -.25px;
-            top: map-get($args, height) * -.207px;
-            transform-origin: center right;
-            transform: rotate(-45deg);
-        }
-        &.dark {
-            &::before { background: linear-gradient($dark-before-gradient-dir, map-get($args, dark-before-one), map-get($args, dark-before-two)); }
-            &::after { background: linear-gradient($dark-after-gradient-dir, map-get($args, dark-after-one), map-get($args, dark-after-two)); }
-        }
-        &.light {
-            &::before { background: linear-gradient($light-before-gradient-dir, map-get($args, light-before-one), map-get($args, light-before-two)); }
-            &::after { background: linear-gradient($light-after-gradient-dir, map-get($args, light-after-one), map-get($args, light-after-two)); }
-        }
-    }
-}
-@mixin curve($args) {
-    &##{map-get($args, id)} {
-        top: map-get($args, top);
-        right: map-get($args, right);
-        width: map-get($args, width);
-        height: map-get($args, height);
-        border-radius: 50%;
-        border: map-get($args, border);
-        transform: map-get($args, transform);
-        z-index: map-get($args, z-index);
-        // background-color: yellow;
-    }
-}
-
 
 #geometry-container {
-    position: absolute;
+    position: fixed;
     z-index: 2;
     height: 75vh;
     width: 0px;
@@ -160,7 +95,6 @@ export default {
     top: 0;
     .shape {
         position: absolute;
-        overflow: hidden;
         @include square-diagonal-split((
             className: "square-1-a",
             height: 160,

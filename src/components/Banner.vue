@@ -3,7 +3,7 @@
 		<span
 			class="ft-normal m-rgt-auto ft-sz-18 dark-mode"
 			@click="clickHandler">
-			<i class='icon-moon-stroke ft-sz-16 p-rgt-15'></i>Dark Mode
+			<i class='icon-moon-stroke ft-sz-16 p-rgt-15'></i>{{inactiveMode}} Mode
 		</span>
 	</div>
 </template>
@@ -83,7 +83,6 @@ export default {
 			styles.setProperty('--global-scale-to-window-width', globalScale);
 
 			let bioScale = Math.min(window.innerWidth * 0.2, 100);
-			console.log('bioScale: ', bioScale);
 			styles.setProperty('--bio-placement', `${bioScale}px`);
 		},
 		mouseAvoidAnimationHandler(event) {

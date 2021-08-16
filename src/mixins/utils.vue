@@ -29,6 +29,18 @@ export default {
 			// other browser
 			return false;
 		}
+	},
+	methods: {
+		convertRemToPixels: rem => {    
+			return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+		},
+		convertPixelsToRem: px => {
+			if (typeof px == 'string' && px.includes('px')) {
+				px.replace('px', '');
+				px = parseInt(px, 10);
+			}
+			return px / parseFloat(getComputedStyle(document.documentElement).fontSize);
+		}
 	}
 };
 </script>

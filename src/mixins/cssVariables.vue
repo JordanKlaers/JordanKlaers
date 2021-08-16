@@ -67,7 +67,6 @@ export default {
 			},[]);
 		},
 		getCSSCustomPropIndexFallBack() {
-			console.log(window.cssVariables);
 		}
     }
 };

@@ -3,10 +3,10 @@ import Vue from 'vue';
 import App from './App';
 import store from '_store_/store';
 
-import BrowserCheck from '_mixins_/BrowserCheck';
+import utils from '_mixins_/utils';
 import _gsap from '_mixins_/Gsap';
 
-Vue.mixin(BrowserCheck);
+Vue.mixin(utils);
 Vue.mixin(_gsap);
 new Vue({
 	el: '#crazyapp',
