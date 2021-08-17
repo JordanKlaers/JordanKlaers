@@ -93,6 +93,6 @@ module.exports = {
 		filename: '[name].bundle.js',
 		path: path.resolve(__dirname, 'docs/'),
 		// publicPath: 'http://localhost:9000'
-		publicPath: '/'
+		publicPath: '/JordanKlaers/'
 	}
 };
