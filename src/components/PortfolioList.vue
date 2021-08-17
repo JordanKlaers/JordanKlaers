@@ -210,7 +210,7 @@ export default {
 @import '~_scss_/_mixins';
 #scroll-reference {
 	position: fixed;
-	top: 50vh;
+	top: 27rem;
 	transform: translateY(-25%);
 	width: 0.25rem;
 	background: linear-gradient(to bottom, transparent, var(--secondary-1-c) 20%, var(--secondary-1-c) 80%, transparent);
