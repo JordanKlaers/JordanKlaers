@@ -21,7 +21,8 @@ module.exports = {
 		port: 9000,
 		hot: true,
 		static: {
-			directory: path.join(__dirname, 'public'), // optional
+			directory: path.join(__dirname, 'docs/'),
+			publicPath: '/JordanKlaers/'
 		},
 		open: true,
 		client: {
@@ -30,6 +31,9 @@ module.exports = {
 				errors: true,    // show errors only
 			},
 		},
+		// historyApiFallback: {
+		// 	index: '/JordanKlaers/index.html',  // SPA fallback for the subpath
+		// },
 	},
 
 	resolve: {
@@ -99,6 +103,6 @@ module.exports = {
 		filename: '[name].bundle.js',
 		path: path.resolve(__dirname, 'docs/'),
 		clean: true,
-		publicPath: './',
+		publicPath: '/JordanKlaers/',
 	},
 };
