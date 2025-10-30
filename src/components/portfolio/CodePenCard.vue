@@ -48,7 +48,7 @@ export default {
 		const backgroundHeight = this.convertPixelsToRem(window.getComputedStyle(document.querySelector(`#${this.id} .background`)).height);
 		const hoverScale = tl.to(`#${this.id} .background`, {
 			//add 2 rem to the top and 1 to the bottom for the description text space, plus the height of the description text
-			height: `${backgroundHeight + 3 + descriptionHeight}rem`,
+			height: `${backgroundHeight + 4 + descriptionHeight}rem`,
 			width: '24rem',
 			top: '-2rem',
 			duration: 0.3,
@@ -98,8 +98,8 @@ export default {
 };
 </script>
 <style lang='scss' type="text/scss">
-@import '~_scss_/variables';
-@import '~_scss_/_mixins';
+@use '~_scss_/variables';
+@use '~_scss_/_mixins';
 .code-pen-card {
 	$card-height: 14.25rem;
 	$card-width: 22rem;

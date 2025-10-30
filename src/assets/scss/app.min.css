@@ -1,0 +1,1 @@
+@use "variables";@use "container";@use "_mixins";@use "utils.scss";@use "base.scss";body,html{margin:0px;height:100%}*{box-sizing:border-box;font-family:'Nunito Sans', sans-serif}#app{position:relative;transition:1s;min-height:100vh;background-color:var(--app-bg-color);background-color:var(--neutral-1);overflow-x:hidden}

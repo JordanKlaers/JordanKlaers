@@ -1,8 +1,8 @@
-@import 'variables';
-@import 'container';
-@import '_mixins';
-@import 'utils.scss';
-@import 'base.scss';
+@use "variables";
+@use "container";
+@use "_mixins";
+@use "utils.scss";
+@use "base.scss";
 // @import '../icomoon/style';
 body, html {
 	margin: 0px;

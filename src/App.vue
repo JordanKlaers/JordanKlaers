@@ -22,7 +22,7 @@ import Banner from './components/Banner';
 import Geometry from './components/Geometry';
 import PortfolioList from './components/PortfolioList';
 import Contact from './components/Contact';
-import 'babel-polyfill';
+// import 'babel-polyfill';
 import CustomEase from '_gsap_/CustomEase';
 
 export default {

@@ -27,7 +27,7 @@
 <script>
 import CodePenCard from './portfolio/CodePenCard.vue';
 import AniamtionDemo from '_images_/AnimationDemo.PNG';
-import FlagsSite from '_images_/FlagsSite.PNG';
+import Brightland from '_images_/brightland.jpg';
 export default {
 	name: 'portfolio-list',
 	components: {
@@ -45,19 +45,19 @@ export default {
 			codePenCards: [
 				{
 					module: CodePenCard,
+					url: 'https://brightlandlights.com/',
+					imgUrl: Brightland,
+					title: 'Brightland',
+					id: 'brightland',
+					description: 'A client project to promote their lighting decoration business.'
+				},
+				{
+					module: CodePenCard,
 					url: 'https://jordanklaers.github.io/animationDemonstration/',
 					imgUrl: AniamtionDemo,
 					title: 'Animation Demo',
 					id: 'animation-demo',
 					description: 'A Collection of animations; transitions, keyframe, and requestAnimationFrame. For use in a knowledge share presentation.'
-				},
-				{
-					module: CodePenCard,
-					url: 'https://countries-flags.herokuapp.com/',
-					imgUrl: FlagsSite,
-					title: 'Country Flags',
-					id: 'country-flags',
-					description: 'A CSS challenge to create a full site, based on wireframes only.'
 				},
 				{
 					module: CodePenCard,

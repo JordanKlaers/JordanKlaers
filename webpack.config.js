@@ -1,98 +1,104 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackInjector = require('html-webpack-injector');
-const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 
-function resolve (dir) {
-	return path.join(__dirname, './', dir)
+function resolve(dir) {
+	return path.join(__dirname, './', dir);
 }
 
 module.exports = {
 	entry: {
 		ieCSSVariables_head: './src/ie11CustomProperties.js',
-		app: './src/main.js'
+		app: './src/main.js',
 	},
+
+	mode: 'development',
 	devtool: 'inline-source-map',
+
 	devServer: {
 		port: 9000,
+		hot: true,
+		static: {
+			directory: path.join(__dirname, 'public'), // optional
+		},
+		open: true,
+		client: {
+			overlay: {
+				warnings: false, // don't show warnings
+				errors: true,    // show errors only
+			},
+		},
 	},
+
 	resolve: {
 		extensions: ['.js', '.vue', '.json', '.scss'],
 		alias: {
-			'src': resolve('src'),
-			'_mixins_': resolve('./src/mixins'),
-			'_scss_': resolve('./src/assets/scss'),
-			'_icomoon_': resolve('./src/assets/icomoon'),
-			'_images_': resolve('./src/assets/image/'),
-			'_store_': resolve('./src/store'),
-			'_gsap_': resolve('./src/assets/scripts/gsap')
-		}
+			src: resolve('src'),
+			_mixins_: resolve('src/mixins'),
+			_scss_: resolve('src/assets/scss'),
+			_icomoon_: resolve('src/assets/icomoon'),
+			_images_: resolve('src/assets/image/'),
+			_store_: resolve('src/store'),
+			_gsap_: resolve('src/assets/scripts/gsap'),
+		},
 	},
-	// optimization: {
-	// 	runtimeChunk: 'single',
-	// 	splitChunks: {
-	// 		chunks: 'all',
-	// 		cacheGroups: {
-	// 			// lodash: {
-	// 			// 	test: /[\\/]node_modules[\\/](lodash)[\\/]/,
-	// 			// 	name: 'lodash',
-	// 			// 	chunks: 'all',
-	// 			// 	priority: 2
-	// 			// },
-	// 			node: {
-	// 				test: /[\\/]node_modules[\\/]/,
-	// 				name: 'node',
-	// 				chunks: 'all'
-	// 			}
-	// 		}
-	// 	}
-	// },
 	module: {
 		rules: [
 			{
-				test: /\.(js)$/,
+				test: /\.vue$/,
+				loader: 'vue-loader',
+			},
+			{
+				test: /\.js$/,
 				exclude: /node_modules/,
 				use: {
-					loader:'babel-loader',
-					options: {
-						presets: ['@babel/preset-env']
-					  }
-				}
+					loader: 'babel-loader',
+					options: { presets: ['@babel/preset-env'] },
+				},
 			},
 			{
-				test: /\.(jpg|jpeg|png|woff|woff2|eot|ttf|svg|PNG)$/,
-				use: ['url-loader']
-			},
-			{
-				test: /\.scss$/,
+				test: /\.(scss|css)$/,
 				use: [
-					"style-loader", // creates style nodes from JS strings
-					"css-loader?url=false", // translates CSS into CommonJS
-					"sass-loader" // compiles Sass to CSS
-				]
+					MiniCssExtractPlugin.loader, // or "style-loader" if you prefer inline
+					{
+						loader: 'css-loader',
+						options: { url: false, sourceMap: true },
+					},
+					'sass-loader',
+				],
 			},
 			{
-				test: /\.vue$/,
-				loader: 'vue-loader'
-			}
-		]
+				test: /\.(jpe?g|png|woff2?|eot|ttf|svg)$/i,
+				type: 'asset/resource',
+				generator: {
+					filename: 'assets/[name][ext][query]',
+				},
+			},
+		],
 	},
-	mode: "development",
+
 	plugins: [
 		new HtmlWebpackPlugin({
 			title: 'Jordan Klaers',
 			template: 'src/index.html',
-			chunks: ['ieCSSVariables_head', 'app']
+			chunks: ['ieCSSVariables_head', 'app'],
 		}),
-		new HtmlWebpackInjector(),
-		new HtmlWebpackHarddiskPlugin(),
-		new webpack.optimize.ModuleConcatenationPlugin()
+		new VueLoaderPlugin(),
+		new MiniCssExtractPlugin({
+			filename: '[name].css',
+		}),
+		new webpack.DefinePlugin({
+			__VUE_OPTIONS_API__: true,
+			__VUE_PROD_DEVTOOLS__: false,
+		}),
 	],
+
 	output: {
 		filename: '[name].bundle.js',
 		path: path.resolve(__dirname, 'docs/'),
-		//publicPath: 'http://localhost:9000'
-		publicPath: '/JordanKlaers/'
-	}
+		clean: true,
+		publicPath: '/',
+	},
 };
